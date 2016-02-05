@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "pm2 start index.js",
-    "preinstall": "bower install",
+    "stop": "pm2 stop 0",
     "postinstall": "gulp"
   },
   "repository": {
@@ -39,9 +39,17 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "imagemin-pngquant": "^4.2.0",
+    "karma": "^0.13.21",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.7",
     "shelljs": "^0.5.3"
   },
   "dependencies": {
+    "angular": "^1.5.0",
+    "angular-cookies": "^1.5.0",
+    "angular-mocks": "^1.5.0",
+    "angular-resource": "^1.5.0",
+    "angular-ui-router": "^0.2.18",
     "body-parser": "^1.14.2",
     "coffee-script": "^1.10.0",
     "cookie-parser": "^1.4.1",

@@ -21,10 +21,11 @@ sourcemap   = require 'gulp-sourcemaps'
 coffeelint  = require 'gulp-coffeelint'
 
 options.angular = [
-  './bower_components/angular/angular.js'
-  './bower_components/angular-cookies/angular-cookies.js'
-  './bower_components/angular-resource/angular-resource.js'
-  './bower_components/angular-ui-router/release/angular-ui-router.js'
+  './node_modules/angular/angular.js'
+  './node_modules/angular-cookies/angular-cookies.js'
+  './node_modules/angular-resource/angular-resource.js'
+  './node_modules/angular-ui-router/release/angular-ui-router.js'
+  './node_modules/angular-sanitize/angular-sanitize.js'
 ]
 
 
@@ -32,7 +33,11 @@ options.app = [
   './src/javascript/app.js'
   './src/javascript/router.js'
   './src/javascript/controllers/auth.js'
+  './src/javascript/directives/blogs.js'
+  './src/javascript/directives/post-blog.js'
+  './src/javascript/directives/get-blog.js'
   './src/javascript/directives/header.js'
+  './src/javascript/directives/footer.js'
   './src/javascript/directives/login.js'
   './src/javascript/factories/api.js'
   './src/javascript/services/user.js'
@@ -57,11 +62,11 @@ options.babel = {
 gulp.task 'sass-install', () ->
 
   bootstrap = () ->
-    return gulp.src './node_modules/bootstrap/scss/**/*.scss'
+    return gulp.src ['./node_modules/bootstrap/scss/**/*.scss']
       .pipe gulp.dest './src/sass/bootstrap'
 
   bourbon = () ->
-    return gulp.src './node_modules/bourbon/app/assets/stylesheets/**/*.scss'
+    return gulp.src ['./node_modules/bourbon/app/assets/stylesheets/**/*.scss']
       .pipe gulp.dest './src/sass/bourbon'
 
   if util.env.bootstrap
@@ -79,7 +84,7 @@ gulp.task 'sass-install', () ->
 # @name sass-build
 # @desc
 ###
-gulp.task 'sass-build', () ->
+gulp.task 'sass-build', ['sass-install'], () ->
   return gulp.src './src/sass/workshop.scss'
     .pipe sass(options.sass)
     .pipe gulp.dest './public/css'
@@ -168,7 +173,6 @@ gulp.task 'develop', () ->
 
 
 gulp.task 'default', [
-  'sass-install',
   'sass-build',
   'coffeelint',
   'eslint',
