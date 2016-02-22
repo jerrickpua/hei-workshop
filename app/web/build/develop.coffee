@@ -34,7 +34,6 @@ options.app = [
   './src/javascript/controllers/auth.js'
   './src/javascript/directives/blogs.js'
   './src/javascript/directives/post-blog.js'
-  './src/javascript/directives/get-blog.js'
   './src/javascript/directives/header.js'
   './src/javascript/directives/login.js'
   './src/javascript/factories/api.js'

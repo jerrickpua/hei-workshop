@@ -10,11 +10,11 @@
 
   function appBlogs ($rootScope) {
     let directive = {
-      scope: true,
+      scope: {currentUser: '='},
       restrict: 'E',
       templateUrl: '/app/views/blogs.html',
       controller: BlogsCtrl,
-      controllerAs: 'blogs',
+      controllerAs: 'blog',
       bindToController: true,
       replace: true,
       transclude: true,
@@ -32,25 +32,101 @@
 
   BlogsCtrl.$inject = [
     '$scope',
+    '$state',
+    '$stateParams',
+    '$timeout',
     'api'
   ]
 
-  function BlogsCtrl ($scope, api) {
-    let blogs = this
+  function BlogsCtrl ($scope, $state, $stateParams, $timeout, api) {
+    let blog = this
 
-    /**
-     * @name getBlogs
-     * @desc gets all blogs from the backend
-     * @param
-     * @returns {Object} response
-     */
+    blog.editMode    = false
+    blog.viewMode    = false
+    blog.getEntry    = getEntry
+    blog.getEntries  = getEntries
+    blog.editEntry   = editEntry
+    blog.deleteEntry = deleteEntry
 
-    api.getBlogs().then((data) => {
-      blogs.alert = false
-      blogs.data = data
-    }, (error) => {
-      blogs.alert = true
-    })
+    // Check whether the state is not an entry view
+    // then fetch entries from server
+    if ($state.current.name === 'app.view') {
+      blog.viewMode = true
+      blog.getEntry($stateParams.id)
+    } else {
+      blog.viewMode = false
+    }
+
+    blog.getEntries()
+
+    function getEntries() {
+      api.getBlogs().then(
+        (data) => {
+          blog.entries = data
+        },
+        (error) => {
+          blog.alert = {}
+        }
+      )
+    }
+
+    function getEntry (id) {
+      api.getBlog(id).then(
+        (data) => {
+          blog.entry = data
+        },
+        (error) => {
+
+        }
+      )
+    }
+
+    function editEntry (content) {
+      blog.editMode = false
+      api.postBlog(content).then(
+        (data) => {
+          blog.alert = {
+            success: true,
+            message: 'Successfully saved'
+          }
+          blog.entry = data
+          getEntries()
+
+          $timeout(function () {
+            blog.alert = null
+          }, 1500)
+        },
+        (error) => {
+          blog.alert = {
+            success: false,
+            message: `Something Went Wrong... ${error}`
+          }
+        }
+      )
+    }
+
+    function deleteEntry () {
+      api.deleteBlog($state.params.id).then(
+        (data) => {
+          blog.alert = {
+            success: true,
+            message: 'Successfully deleted'
+          }
+
+          $timeout(function () {
+            blog.alert = null
+            $state.go('app.default')
+          }, 1500)
+        },
+        (error) => {
+          blog.alert = {
+            success: false,
+            message: `Something Went Wrong... ${error}`
+          }
+        }
+      )
+    }
+
 
   }
 

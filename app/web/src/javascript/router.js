@@ -57,7 +57,7 @@
             template: '<app-header current-user="auth.currentUser.username"/>'
           },
           'content@app': {
-            template: '<app-blogs/>',
+            template: '<app-blogs current-user="auth.currentUser"/>',
           }
         }
       })
@@ -134,7 +134,7 @@
             template: '<app-header current-user="auth.currentUser.username"/>'
           },
           'content@app': {
-            template: '<app-get-blog/>'
+            template: '<app-blogs current-user="auth.currentUser"/>'
           }
         }
       })
