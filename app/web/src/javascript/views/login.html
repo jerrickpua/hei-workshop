@@ -26,7 +26,7 @@
                 <fieldset class="form-group" ng-class="{ 'has-danger': (loginForm.username.$touched && loginForm.username.$invalid) || login.alert }">
                   <label class="sr-only">Username</label>
                   <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" required
-                    ng-model="login.ngModel.username"
+                    ng-model="login.user.username"
                     ng-class="{ 'form-control-danger': (loginForm.username.$touched && loginForm.username.$invalid) || login.alert}">
                   <small class="center-block p-y-1 text-danger text-sm-right"
                     ng-messages="loginForm.username.$error"
@@ -38,7 +38,7 @@
                 <fieldset class="form-group" ng-class="{ 'has-danger': (loginForm.password.$touched && loginForm.password.$invalid) || login.alert }">
                   <label class="sr-only">Password</label>
                   <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required
-                    ng-model="login.ngModel.password"
+                    ng-model="login.user.password"
                     ng-class="{ 'form-control-danger': (loginForm.password.$touched && loginForm.password.$invalid) || login.alert }">
                   <small class="center-block p-y-1 text-danger text-sm-right"
                     ng-messages="loginForm.password.$error"

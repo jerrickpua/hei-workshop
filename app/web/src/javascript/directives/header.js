@@ -12,7 +12,7 @@
   function HeaderDirective ($rootScope) {
     let views = '/app/views/'
     let directive = {
-      scope: {currentUser: '='},
+      scope: true,
       restrict: 'E',
       replace: true,
       transclude: true,

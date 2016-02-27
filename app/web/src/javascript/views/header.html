@@ -2,16 +2,16 @@
   <div class="container-fluid">
     <a class="navbar-brand" ui-sref="app.default">HEI Blog</a>
 
-    <ul class="nav navbar-nav pull-xs-right" ng-if="!currentUser">
+    <ul class="nav navbar-nav pull-xs-right" ng-if="!auth.currentUser">
       <li class="nav-item">
         <a class="nav-link" ui-sref="app.login">Login</a>
       </li>
     </ul>
 
-    <ul class="nav navbar-nav pull-xs-right" ng-if="currentUser">
+    <ul class="nav navbar-nav pull-xs-right" ng-if="auth.currentUser">
       <li class="nav-item">
-        <a ui-sref="app.profile(currentUser)" class="nav-link">
-          Welcome back, <span ng-bind="currentUser"></span>
+        <a ui-sref="app.profile" class="nav-link">
+          Welcome back, <span ng-bind="auth.currentUser.username"></span>
         </a>
       </li>
 

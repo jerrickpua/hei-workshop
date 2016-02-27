@@ -10,7 +10,7 @@
 
   function UserLogin ($rootScope) {
     let directive = {
-      scope: {ngModel: '='},
+      scope: true,
       restrict: 'E',
       replace: true,
       transclude: true,
@@ -61,10 +61,10 @@
        * @returns {Boolean}
        */
       this.userLogin = (redirect) => {
-        api.login(login.ngModel).then((data) => {
+        api.login(login.user).then((data) => {
           if ( data.hasOwnProperty('token') ) {
             userContext.setCurrentUser(Object.assign({
-              username: login.ngModel.username
+              username: login.user.username
             }, data))
             $rootScope.$emit('auth::setUser')
             return $state.go(redirect)

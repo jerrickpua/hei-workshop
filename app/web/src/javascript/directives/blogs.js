@@ -10,7 +10,7 @@
 
   function appBlogs ($rootScope) {
     let directive = {
-      scope: {currentUser: '='},
+      scope: true,
       restrict: 'E',
       templateUrl: '/app/views/blogs.html',
       controller: BlogsCtrl,

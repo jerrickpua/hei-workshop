@@ -42,7 +42,6 @@
             template: `
               <header ui-view="header"></header>
               <div ui-view="content" role="main"></div>
-              <footer ui-view="footer"></footer>
             `
           }
         }
@@ -54,21 +53,21 @@
         data: {private: false},
         views: {
           'header@app': {
-            template: '<app-header current-user="auth.currentUser.username"/>'
+            template: '<app-header/>'
           },
           'content@app': {
-            template: '<app-blogs current-user="auth.currentUser"/>',
+            template: '<app-blogs/>',
           }
         }
       })
 
       .state('app.login', {
-        url: 'admin/login',
+        url: 'admin/login/',
         cache: false,
         data: {private: false},
         views: {
           'content@app': {
-            template: '<user-login ng-model="auth.user"/>'
+            template: '<user-login/>'
           }
         }
       })
@@ -103,7 +102,7 @@
         data: {private: false},
         views: {
           'header@app': {
-            template: '<app-header current-user="auth.currentUser.username"/>'
+            template: '<app-header/>'
           },
           'content@app': {
             template: '{{ auth.currentUser.username }}'
@@ -117,7 +116,7 @@
         data: {private: false},
         views: {
           'header@app': {
-            template: '<app-header current-user="auth.currentUser.username"/>'
+            template: '<app-header/>'
           },
           'content@app': {
             template: '<app-post-blog/>'
@@ -126,15 +125,15 @@
       })
 
       .state('app.view', {
-        url: 'view/:id',
+        url: 'view/:id/',
         cache: false,
         data: {private: false},
         views: {
           'header@app': {
-            template: '<app-header current-user="auth.currentUser.username"/>'
+            template: '<app-header/>'
           },
           'content@app': {
-            template: '<app-blogs current-user="auth.currentUser"/>'
+            template: '<app-blogs/>'
           }
         }
       })
