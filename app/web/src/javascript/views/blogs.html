@@ -10,8 +10,8 @@
 
       <div class="text-xs-center" ng-if="blog.entries.length <= 0">
         <h3>Blogs list is empty</h3>
-        <button ng-if="auth.currentUser" ui-sref="app.post" class="btn btn-primary m-t-1">Create one now</button>
-        <span ng-if="!auth.currentUser">Please <a ui-sref="app.login">login</a> to post</span>
+        <button ng-if="auth.currentUser.username" ui-sref="app.post" class="btn btn-primary m-t-1">Create one now</button>
+        <span ng-if="!auth.currentUser.username">Please <a ui-sref="app.login">login</a> to post</span>
       </div>
       <article ng-if="blog.viewMode === false" class="blog-container card m-b-3 b-r-0" ng-repeat="entry in blog.entries track by $index">
         <header class="card-header p-a-1 b-r-0">
@@ -30,7 +30,7 @@
           <header class="p-y-2">
             <h1 ng-bind="blog.entry.title" class="pull-xs-left display-3 font-weight-bold m-b-1"></h1>
           </header>
-          <small ng-if="auth.currentUser" class="pull-xs-right">
+          <small ng-if="auth.currentUser.username" class="pull-xs-right">
             <a ng-click="blog.editMode = true" class="btn btn-success" href="#"><i class="ion-edit"></i>&nbsp; Edit</a>
             <a ng-click="blog.deleteEntry()" class="btn btn-danger" href="#"><i class="ion-trash-b"></i>&nbsp; Delete</a>
           </small>

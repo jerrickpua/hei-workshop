@@ -17,10 +17,13 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.9",
-    "angular-mocks": "~1.4.9",
-    "angular-cookies": "~1.4.9",
-    "angular-resource": "~1.4.9",
+    "angular": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "angular-cookies": "~1.5.0",
+    "angular-resource": "~1.5.0",
     "angular-ui-router": "~0.2.17"
+  },
+  "resolutions": {
+    "angular": "~1.5.0"
   }
 }
