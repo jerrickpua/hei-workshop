@@ -177,5 +177,6 @@ gulp.task 'default', [
   'coffeelint',
   'eslint',
   'app-build',
-  'app-angular'
+  'app-angular',
+  'sass-build'
 ]
