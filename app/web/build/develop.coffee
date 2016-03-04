@@ -171,10 +171,9 @@ gulp.task 'develop', () ->
 
 
 gulp.task 'default', [
-  'sass-install',
-  'sass-build',
   'coffeelint',
   'eslint',
   'app-build',
-  'app-angular'
+  'app-angular',
+  'sass-build'
 ]
