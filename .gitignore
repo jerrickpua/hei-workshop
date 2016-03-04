@@ -39,9 +39,9 @@ nbactions.xml
 # Folders to ignore
 node_modules
 bower_components
-web/public/**/*.css
-web/public/**/*.js
-web/public/**/*.map
-web/public/app/views/*.html
-web/src/sass/bootstrap
-web/src/sass/bourbon
+public/**/*.css
+public/**/*.js
+public/**/*.map
+public/app/views/*.html
+src/sass/bootstrap
+src/sass/bourbon
