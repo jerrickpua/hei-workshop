@@ -14,7 +14,7 @@
   ]
 
   function ApiFactory ($rootScope, $http, $q, $state, userContext) {
-    let baseurl = 'http://127.0.0.1:8080/api/'
+    let baseurl = 'https://hei-workshop.herokuapp.com/api/'
     let user = userContext.getCurrentUser()
     let headers = {
       'Content-Type': 'application/json',
