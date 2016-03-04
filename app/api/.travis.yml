@@ -1,4 +1,0 @@
-language	: java
-script		: 
-	- cd app/api
-	- mvn clean install
